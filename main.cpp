@@ -140,11 +140,11 @@ int main()
 
     if (smaller != nullptr)
     {
-            std::cout << "the smaller one is << " << smaller->name << std::endl; //9
+        std::cout << "the smaller one is << " << smaller->name << std::endl; //9
     }
     else
     {
-            std::cout << "the values are the same" << std::endl;
+        std::cout << "the values are the same" << std::endl;
     }
     
     U u;
