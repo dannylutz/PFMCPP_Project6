@@ -67,15 +67,19 @@ struct Comparison                                //4
 {
     T* compare(T* a, T* b) //5
     {
-        if( a->value < b->value ) return a;
-        if( a->value > b->value ) return b;
+        if (a != nullptr && b != nullptr)
+        {
+            if( a->value < b->value ) return a;
+            if( a->value > b->value ) return b;
+        }
+        
         return nullptr;
     }
 };
 
 struct U
 {
-    float Doughnuts { 4.2f }, Days { 3.2f };
+    float doughnuts { 4.2f }, Days { 3.2f };
     float doughnutsConsumed(float* totalDoughnuts)      //12
     {
         if (totalDoughnuts != nullptr)
@@ -132,10 +136,10 @@ struct UpdateDoughnutCount
 
 int main()
 {
-    T first(3.4, "name1");                                             //6
-    T second(4.5, "name2" );                                             //6
+    T first(3.4, "name1");                         //6
+    T second(4.5, "name2" );                       //6
     
-    Comparison f;                                            //7
+    Comparison f;                                  //7
     auto* smaller = f.compare(&first, &second);    //8
 
     if (smaller != nullptr)
@@ -144,12 +148,12 @@ int main()
     }
     else
     {
-        std::cout << "the values are the same" << std::endl;
+        std::cout << "either one or both of your arguments to the compare function were nullptrs or the arguments were of the same value " << std::endl;
     }
     
     U u;
     float updatedValue = 5.f;
-    std::cout << "[static func] u's multiplied values: " << UpdateDoughnutCount::tallyDoughnuts(&u ,&updatedValue) << std::endl;                  //11
+    std::cout << "[static func] u's multiplied values: " << UpdateDoughnutCount::tallyDoughnuts(&u, &updatedValue) << std::endl;                  //11
     
     U uu;
     std::cout << "[member func] uu's multiplied values: " << uu.doughnutsConsumed( &updatedValue ) << std::endl;
