@@ -79,21 +79,21 @@ struct Comparison                                //4
 
 struct U
 {
-    float doughnuts { 4.2f }, Days { 3.2f };
+    float doughnuts { 4.2f }, days { 3.2f };
     float doughnutsConsumed(float* totalDoughnuts)      //12
     {
         if (totalDoughnuts != nullptr)
         {
-            std::cout << "U's doughnut count: " << this->Doughnuts << std::endl;
-            this->Doughnuts = *totalDoughnuts;
-            std::cout << "U's updated doughnut count: " << this->Doughnuts << std::endl;
+            std::cout << "U's doughnut count: " << this->doughnuts << std::endl;
+            this->doughnuts = *totalDoughnuts;
+            std::cout << "U's updated doughnut count: " << this->doughnuts << std::endl;
 
-            while( std::abs(this->Days - this->Doughnuts) > 0.001f )
+            while( std::abs(this->days - this->doughnuts) > 0.001f )
             {
-                this->Doughnuts += 0.2f;
+                this->doughnuts += 0.2f;
             }
-            std::cout << "U's updated Days value: " << this->Days << std::endl;
-            return this->Days * this->Doughnuts;
+            std::cout << "U's updated Days value: " << this->days << std::endl;
+            return this->days * this->doughnuts;
         }
         return 0;
     }
@@ -105,16 +105,16 @@ struct UpdateDoughnutCount
     {
         if ((that != nullptr) && (updatedDoughnutCount != nullptr))
         {
-            std::cout << "U's doughnut count: " << that->Doughnuts << std::endl;
-            that->Doughnuts = *updatedDoughnutCount;
-            std::cout << "U's updated doughnut count: " << that->Doughnuts << std::endl;
+            std::cout << "U's doughnut count: " << that->doughnuts << std::endl;
+            that->doughnuts = *updatedDoughnutCount;
+            std::cout << "U's updated doughnut count: " << that->doughnuts << std::endl;
 
-            while( std::abs(that->Days - that->Doughnuts) > 0.001f )
+            while( std::abs(that->days - that->doughnuts) > 0.001f )
             {
-                that->Doughnuts += 0.2f;
+                that->doughnuts += 0.2f;
             }
-            std::cout << "U's updated Days value: " << that->Days << std::endl;
-            return that->Days * that->Doughnuts;
+            std::cout << "U's updated Days value: " << that->days << std::endl;
+            return that->days * that->doughnuts;
         }
         return 0;
     }
