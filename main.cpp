@@ -72,30 +72,27 @@ struct Comparison                                //4
             if( a->value < b->value ) return a;
             if( a->value > b->value ) return b;
         }
-        
         return nullptr;
     }
 };
 
 struct U
 {
-    float doughnuts { 4.2f }, days { 3.2f };
+    float doughnuts { 10 }, days { 12 };
     float doughnutsConsumed(float* totalDoughnuts)      //12
     {
-        if (totalDoughnuts != nullptr)
-        {
-            std::cout << "U's doughnut count: " << this->doughnuts << std::endl;
-            this->doughnuts = *totalDoughnuts;
-            std::cout << "U's updated doughnut count: " << this->doughnuts << std::endl;
+        if (totalDoughnuts == nullptr) return 0.0f;
+        
+        std::cout << "uu's doughnut count: " << this->doughnuts << std::endl;
+        this->doughnuts = *totalDoughnuts;
+        std::cout << "uu's updated doughnut count: " << this->doughnuts << std::endl;
 
-            while( std::abs(this->days - this->doughnuts) > 0.001f )
-            {
-                this->doughnuts += 0.2f;
-            }
-            std::cout << "U's updated Days value: " << this->days << std::endl;
-            return this->days * this->doughnuts;
+        while( std::abs(this->days - this->doughnuts) > 0.001f )
+        {
+            this->doughnuts += 0.2f;
         }
-        return 0;
+        std::cout << "uu's updated Days value: " << this->days << std::endl;
+        return this->days * this->doughnuts;
     }
 };
 
@@ -103,20 +100,18 @@ struct UpdateDoughnutCount
 {
     static float tallyDoughnuts(U* that, float* updatedDoughnutCount )        //10
     {
-        if ((that != nullptr) && (updatedDoughnutCount != nullptr))
-        {
-            std::cout << "U's doughnut count: " << that->doughnuts << std::endl;
-            that->doughnuts = *updatedDoughnutCount;
-            std::cout << "U's updated doughnut count: " << that->doughnuts << std::endl;
+        if ((that == nullptr) && (updatedDoughnutCount == nullptr)) return 0.0f;
+        
+        std::cout << "U's doughnut count: " << that->doughnuts << std::endl;
+        that->doughnuts = *updatedDoughnutCount;
+        std::cout << "U's updated doughnut count: " << that->doughnuts << std::endl;
 
-            while( std::abs(that->days - that->doughnuts) > 0.001f )
-            {
-                that->doughnuts += 0.2f;
-            }
-            std::cout << "U's updated Days value: " << that->days << std::endl;
-            return that->days * that->doughnuts;
+        while( std::abs(that->days - that->doughnuts) > 0.001f )
+        {
+            that->doughnuts += 0.02f;
         }
-        return 0;
+        std::cout << "U's updated Days value: " << that->days << std::endl;
+        return that->days * that->doughnuts;
     }
 };
         
@@ -144,7 +139,7 @@ int main()
 
     if (smaller != nullptr)
     {
-        std::cout << "the smaller one is << " << smaller->name << std::endl; //9
+        std::cout << "the smaller one is " << smaller->name << std::endl; //9
     }
     else
     {
@@ -152,7 +147,7 @@ int main()
     }
     
     U u;
-    float updatedValue = 5.f;
+    float updatedValue = 5.0f;
     std::cout << "[static func] u's multiplied values: " << UpdateDoughnutCount::tallyDoughnuts(&u, &updatedValue) << std::endl;                  //11
     
     U uu;
