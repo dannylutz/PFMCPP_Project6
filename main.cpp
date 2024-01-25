@@ -38,9 +38,9 @@ struct Comparison                                //4
 {
     T* compare(T& a, T& b) //5
     {
-        if ((a.value - b.value) < 0.00001) return nullptr;
-        if( a.value < b.value ) return &a;
-        return &b;
+        if ( a.value < b.value ) return &a;
+        if ( a.value > b.value ) return &b;
+        return nullptr;
     }
 };
 
